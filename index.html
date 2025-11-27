@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profile Card</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: url("https://i.postimg.cc/vBQ0HJ1f/IMG-9356.jpg") center/cover no-repeat fixed;
+        overflow-x: hidden;
+    }
+
+    /* ❄ icon tuyết */
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        font-size: 20px;
+        color: #8ecaff;
+        opacity: 0.9;
+        pointer-events: none;
+        animation: fall linear infinite;
+        z-index: 9999;
+    }
+    @keyframes fall {
+        to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Khung trắng */
+    .card {
+        width: 78%;
+        margin: 150px auto 60px;
+        background: white;
+        padding: 25px 25px 40px;
+        border-radius: 25px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Avatar */
+    .avatar {
+        width: 115px;
+        height: 115px;
+        border-radius: 50%;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid #5b5ce2;
+        object-fit: cover;
+        background: white;
+    }
+
+    /* Tên */
+    .name {
+        margin-top: 70px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #5b5ce2;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .tick {
+        width: 24px;
+    }
+
+    .bio {
+        margin: 12px 0 18px;
+        padding: 0 10px;
+        color: #394455;
+        font-size: 15px;
+        line-height: 1.55;
+        font-weight: 500;
+    }
+
+    .location {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .location img {
+        width: 28px;
+        opacity: 0.95;
+    }
+
+    .location span {
+        font-size: 18px;
+        font-weight: 600;
+        color: #374455;
+    }
+
+    .key-box {
+        background: #6f63ff;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 9px;
+        display: inline-block;
+        font-size: 17px;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Stats */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 0;
+        margin-top: 30px;
+    }
+
+    .stat-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2d3a4a;
+    }
+
+    .stat-label {
+        margin-top: -3px;
+        font-size: 15px;
+        color: #59616c;
+    }
+
+    /* 5 icon tròn */
+    .socials {
+        margin-top: 45px;
+        display: flex;
+        justify-content: center;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+    .socials a img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    /* ❤️ tim */
+    .heart {
+        position: fixed;
+        font-size: 25px;
+        animation: heartFloat 1s ease-out forwards;
+        pointer-events: none;
+        z-index: 99999;
+    }
+
+    @keyframes heartFloat {
+        0% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ❄ Tạo 25 bông tuyết -->
+<script>
+for (let i = 0; i < 25; i++) {
+    let snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.innerHTML = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = 5 + Math.random() * 5 + "s";
+    snow.style.fontSize = 12 + Math.random() * 14 + "px";
+    document.body.appendChild(snow);
+}
+</script>
+
+
+<div class="card">
+    <!-- Avatar -->
+    <img class="avatar" src="https://i.postimg.cc/65cKzKKp/IMG-9362.jpg" />
+
+    <!-- Tên + tích xanh -->
+    <div class="name">
+        Nguyễn Quốc Tài
+        <img class="tick" src="https://i.postimg.cc/dV5c8cCH/IMG-9355.jpg">
+    </div>
+
+    <div class="bio">
+        Mình là <b>Nguyễn Quốc Tài</b>, là học sinh năng động, có sở thích nghiên cứu và tìm tòi những thứ mới lạ, rất vui được làm quen với tất cả mọi người...
+    </div>
+
+    <!-- Địa điểm -->
+    <div class="location">
+        <img src="https://i.postimg.cc/Njb1gKwP/IMG-9360.jpg">
+        <span>Quảng Nam - Đà Nẵng</span>
+    </div>
+
+    <div style="margin-top:10px;font-weight:700;font-size:18px;color:#374455">Key Tool:</div>
+    <div class="key-box">TĐZ_NDE0OTQ0NzI1MDc</div>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div>
+            <div class="stat-number" id="followers">0</div>
+            <div class="stat-label">Followers</div>
+        </div>
+
+        <div>
+            <div class="stat-number" id="following">0</div>
+            <div class="stat-label">Following</div>
+        </div>
+
+        <div>
+            <div class="stat-number" id="posts">0</div>
+            <div class="stat-label">Posts</div>
+        </div>
+
+        <div>
+            <div class="stat-number" id="works">0</div>
+            <div class="stat-label">Works</div>
+        </div>
+    </div>
+
+    <!-- 5 icon dưới -->
+    <div class="socials">
+        <a><img src="https://i.postimg.cc/CKBdW5Mf/IMG-9359.jpg"></a>
+        <a><img src="https://i.postimg.cc/d3HYsR4d/IMG-9359.jpg"></a>
+        <a><img src="https://i.postimg.cc/ry76J9Ky/IMG-9359.jpg"></a>
+        <a><img src="https://i.postimg.cc/zvFnVjQF/IMG-9359.jpg"></a>
+        <a><img src="https://i.postimg.cc/0ywynQ8B/IMG-9359.jpg"></a>
+    </div>
+</div>
+
+
+<!-- ❤️ tim khi chạm -->
+<script>
+document.addEventListener("click", function(e) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    heart.style.color = ["#ff3b3b", "#ff66c4", "#ff914d", "#7ed957", "#00bfff"][Math.floor(Math.random()*5)];
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 900);
+});
+</script>
+
+<!-- 🔢 hiệu ứng đếm số -->
+<script>
+function animateCounter(element, target, duration = 1800) {
+    let start = 0;
+    let increment = target / (duration / 16);
+
+    let timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            start = target;
+            clearInterval(timer);
+        }
+
+        if (target >= 1000) {
+            element.innerText = Math.floor(start).toLocaleString("vi-VN");
+        } else {
+            element.innerText = Math.floor(start);
+        }
+    }, 16);
+}
+
+window.onload = function() {
+    animateCounter(document.getElementById("followers"), 50000);
+    animateCounter(document.getElementById("following"), 1);
+    animateCounter(document.getElementById("posts"), 68);
+    animateCounter(document.getElementById("works"), 2);
+}
+</script>
+
+</body>
+</html>
